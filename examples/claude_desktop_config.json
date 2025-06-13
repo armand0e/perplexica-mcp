@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "perplexica": {
+      "command": "python",
+      "args": ["-m", "perplexica_mcp"],
+      "env": {
+        "PERPLEXICA_BASE_URL": "http://localhost:3000"
+      }
+    }
+  }
+}
