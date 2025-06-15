@@ -80,6 +80,20 @@ To publish the package to PyPI:
    pip install perplexica-mcp
    ```
 
+## Running with uvx
+
+This server can also be run directly using `uvx`, which is part of the `uv` (astral-uv) Python package manager. This method assumes that `uv` is installed and the `perplexica-mcp` package has been published to PyPI by the user/organization `armand0e`.
+
+To run the server using `uvx`, use the following command:
+
+```bash
+uvx @armand0e/perplexica-mcp:latest
+```
+
+`uvx` will handle the download of the package and its dependencies into a managed environment and then execute the server. This is a convenient way to run the server without a manual installation step.
+
+Ensure that the package `perplexica-mcp` is published on PyPI under the `armand0e` user or organization for this command to work.
+
 ## Repository Structure
 
 ```
