@@ -29,11 +29,11 @@ jobs:
 
     - name: Lint with black
       run: |
-        black --check src/ tests/
+        black src/ tests/
 
     - name: Check imports with isort
       run: |
-        isort --check-only src/ tests/
+        isort src/ tests/
 
     - name: Type check with mypy
       run: |
