@@ -70,7 +70,7 @@ class SearchResponse(BaseModel):
 class PerplexicaClient:
     """Client for interacting with Perplexica API."""
 
-    def __init__(self, base_url: str = "http://localhost:3000"):
+    def __init__(self, base_url: str = "http://localhost:3000") -> None:
         self.base_url = base_url.rstrip("/")
         self.client = httpx.AsyncClient(timeout=60.0)
 
@@ -96,14 +96,15 @@ class PerplexicaClient:
         except Exception as e:
             raise Exception(f"Search failed: {e}")
 
-    async def get_models(self) -> Dict[str, str]:
+    async def get_models(self) -> Dict[str, Any]:
         """Get available models from Perplexica."""
         url = f"{self.base_url}/api/models"
 
         try:
             response = await self.client.get(url)
             response.raise_for_status()
-            return response.json()
+            data = await response.aread()
+            return json.loads(data)
 
         except httpx.HTTPError as e:
             raise Exception(f"HTTP error occurred: {e}")
@@ -120,7 +121,7 @@ class PerplexicaClient:
 class PerplexicaServer:
     """Perplexica MCP Server."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.server = Server("perplexica")
         base_url = os.getenv("PERPLEXICA_BASE_URL", "http://localhost:3000")
         self.client = PerplexicaClient(base_url)
