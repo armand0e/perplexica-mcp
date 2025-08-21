@@ -3,10 +3,11 @@
 import asyncio
 import json
 import os
-from typing import Any, Dict, List, Optional, Sequence, Union
+from typing import Any, Dict, List, Optional, Sequence, Union, cast
 
 import httpx
 from mcp.server import Server
+from mcp.server.lowlevel import NotificationOptions
 from mcp.server.models import InitializationOptions
 from mcp.server.stdio import stdio_server
 from mcp.types import (
@@ -103,8 +104,8 @@ class PerplexicaClient:
         try:
             response = await self.client.get(url)
             response.raise_for_status()
-            data = await response.aread()
-            return json.loads(data)
+            data = response.json()
+            return cast(Dict[str, Any], data)
 
         except httpx.HTTPError as e:
             raise Exception(f"HTTP error occurred: {e}")
@@ -126,11 +127,10 @@ class PerplexicaServer:
         base_url = os.getenv("PERPLEXICA_BASE_URL", "http://localhost:3000")
         self.client = PerplexicaClient(base_url)
 
-        # Register handlers
-        self.server.list_tools = self.list_tools
-        self.server.call_tool = self.call_tool
+        # Handlers are available as instance methods; the low-level Server
+        # can be decorated to register them if needed.
 
-    async def list_tools(self, request: ListToolsRequest) -> ListToolsResult:
+    async def list_tools(self, request: Optional[ListToolsRequest] = None) -> ListToolsResult:
         """List available tools."""
         return ListToolsResult(
             tools=[
@@ -329,7 +329,8 @@ class PerplexicaServer:
                     server_name="perplexica",
                     server_version="0.1.0",
                     capabilities=self.server.get_capabilities(
-                        notification_options=None, experimental_capabilities=None
+                        notification_options=NotificationOptions(),
+                        experimental_capabilities=cast(Dict[str, Dict[str, Any]], {}),
                     ),
                 ),
             )
