@@ -15,7 +15,7 @@ This document provides step-by-step instructions for deploying the Perplexica MC
    ```bash
    ./setup_repo.sh
    ```
-   
+
    Follow the prompts and enter your repository URL when asked.
 
 ## Manual Setup
@@ -47,7 +47,7 @@ After pushing to GitHub:
    - Check the "Actions" tab to see the test workflow
 
 3. **Update README badges**:
-   - Replace `your-username` in the README badges with your actual GitHub username
+   - Replace `armand0e` in the README badges with your actual GitHub username
 
 4. **Set up branch protection** (optional):
    - Go to Settings > Branches

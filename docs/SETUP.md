@@ -27,7 +27,7 @@ First, you need to have Perplexica running locally. Follow the official installa
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/perplexica-mcp.git
+   git clone https://github.com/armand0e/perplexica-mcp.git
    cd perplexica-mcp
    ```
 

@@ -19,7 +19,7 @@ A Model Context Protocol (MCP) server for interacting with local Perplexica inst
 ### From Source
 
 ```bash
-git clone https://github.com/your-username/perplexica-mcp.git
+git clone https://github.com/armand0e/perplexica-mcp.git
 cd perplexica-mcp
 pip install -e .
 ```
@@ -27,7 +27,7 @@ pip install -e .
 ### From Git (Direct Install)
 
 ```bash
-pip install git+https://github.com/your-username/perplexica-mcp.git
+pip install git+https://github.com/armand0e/perplexica-mcp.git
 ```
 
 ## Configuration

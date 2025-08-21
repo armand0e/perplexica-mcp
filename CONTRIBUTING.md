@@ -6,7 +6,7 @@ Thank you for your interest in contributing to the Perplexica MCP Server! This d
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/perplexica-mcp.git
+   git clone https://github.com/armand0e/perplexica-mcp.git
    cd perplexica-mcp
    ```
 
