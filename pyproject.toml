@@ -6,42 +6,28 @@ build-backend = "setuptools.build_meta"
 name = "perplexica-mcp"
 version = "0.1.0"
 description = "MCP server for Perplexica AI-powered search engine"
-authors = [
-    {name = "armand0e", email = "aran.rafiee@gmail.com"}
-]
+authors = [{ name = "armand0e", email = "aran.rafiee@gmail.com" }]
 readme = "README.md"
-license = {text = "MIT"}
-requires-python = ">=3.8"
+license = { text = "MIT" }
+requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-dependencies = [
-    "mcp[cli]",
-    "httpx",
-    "pydantic>=2.0.0",
-]
+dependencies = ["mcp[cli]", "httpx", "pydantic>=2.0.0"]
 
 [project.optional-dependencies]
-dev = [
-    "pytest",
-    "pytest-asyncio",
-    "black",
-    "isort",
-    "mypy",
-]
+dev = ["pytest", "pytest-asyncio", "black", "isort", "mypy"]
 
 [project.urls]
-Homepage = "https://github.com/openhands/perplexica-mcp"
-Repository = "https://github.com/openhands/perplexica-mcp"
-Issues = "https://github.com/openhands/perplexica-mcp/issues"
+Homepage = "https://github.com/armand0e/perplexica-mcp"
+Repository = "https://github.com/armand0e/perplexica-mcp"
+Issues = "https://github.com/armand0e/perplexica-mcp/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -50,15 +36,15 @@ where = ["src"]
 "" = "src"
 
 [tool.black]
-line-length = 88
-target-version = ['py38']
+line-length = 120
+target-version = ['py310']
 
 [tool.isort]
 profile = "black"
-line_length = 88
+line_length = 120
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
