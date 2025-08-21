@@ -1,7 +1,7 @@
 # Perplexica MCP Server
 
 [![Tests](https://github.com/armand0e/perplexica-mcp/workflows/Tests/badge.svg)](https://github.com/armand0e/perplexica-mcp/actions)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A Model Context Protocol (MCP) server for interacting with local Perplexica instances. This server provides tools to perform AI-powered searches using your local Perplexica installation.
