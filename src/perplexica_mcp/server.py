@@ -41,9 +41,7 @@ class SearchRequest(BaseModel):
 
     chatModel: Optional[ChatModel] = None
     embeddingModel: Optional[EmbeddingModel] = None
-    optimizationMode: Optional[str] = Field(
-        default="balanced", description="speed, balanced"
-    )
+    optimizationMode: Optional[str] = Field(default="balanced", description="speed, balanced")
     focusMode: str = Field(
         description="webSearch, academicSearch, writingAssistant, wolframAlphaSearch, youtubeSearch, redditSearch"
     )
@@ -283,11 +281,7 @@ class PerplexicaServer:
                 response_text += f"{i}. [{title}]({url})\n"
                 if source.pageContent:
                     # Truncate long content
-                    content = (
-                        source.pageContent[:200] + "..."
-                        if len(source.pageContent) > 200
-                        else source.pageContent
-                    )
+                    content = source.pageContent[:200] + "..." if len(source.pageContent) > 200 else source.pageContent
                     response_text += f"   {content}\n\n"
 
         return CallToolResult(content=[TextContent(type="text", text=response_text)])

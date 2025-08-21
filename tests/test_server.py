@@ -58,11 +58,7 @@ async def test_perplexica_client_get_models():
     """Test the PerplexicaClient get_models functionality."""
     mock_models_data = {
         "chatModels": {"openai": {"gpt-4o-mini": {"displayName": "GPT 4 omni mini"}}},
-        "embeddingModels": {
-            "openai": {
-                "text-embedding-3-large": {"displayName": "Text Embedding 3 Large"}
-            }
-        },
+        "embeddingModels": {"openai": {"text-embedding-3-large": {"displayName": "Text Embedding 3 Large"}}},
     }
 
     with patch("httpx.AsyncClient") as mock_client_class:
