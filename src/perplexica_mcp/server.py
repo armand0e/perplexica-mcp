@@ -41,7 +41,9 @@ class SearchRequest(BaseModel):
 
     chatModel: Optional[ChatModel] = None
     embeddingModel: Optional[EmbeddingModel] = None
-    optimizationMode: Optional[str] = Field(default="balanced", description="speed, balanced")
+    optimizationMode: Optional[str] = Field(
+        default="balanced", description="speed, balanced"
+    )
     focusMode: str = Field(
         description="webSearch, academicSearch, writingAssistant, wolframAlphaSearch, youtubeSearch, redditSearch"
     )
@@ -94,7 +96,7 @@ class PerplexicaClient:
         except Exception as e:
             raise Exception(f"Search failed: {e}")
 
-    async def get_models(self) -> Dict[str, Any]:
+    async def get_models(self) -> Dict[str, str]:
         """Get available models from Perplexica."""
         url = f"{self.base_url}/api/models"
 
@@ -110,7 +112,7 @@ class PerplexicaClient:
         except Exception as e:
             raise Exception(f"Failed to get models: {e}")
 
-    async def close(self):
+    async def close(self) -> None:
         """Close the HTTP client."""
         await self.client.aclose()
 
@@ -281,7 +283,11 @@ class PerplexicaServer:
                 response_text += f"{i}. [{title}]({url})\n"
                 if source.pageContent:
                     # Truncate long content
-                    content = source.pageContent[:200] + "..." if len(source.pageContent) > 200 else source.pageContent
+                    content = (
+                        source.pageContent[:200] + "..."
+                        if len(source.pageContent) > 200
+                        else source.pageContent
+                    )
                     response_text += f"   {content}\n\n"
 
         return CallToolResult(content=[TextContent(type="text", text=response_text)])
@@ -312,7 +318,7 @@ class PerplexicaServer:
 
         return CallToolResult(content=[TextContent(type="text", text=response_text)])
 
-    async def run(self):
+    async def run(self) -> None:
         """Run the server."""
         async with stdio_server() as (read_stream, write_stream):
             await self.server.run(
@@ -327,12 +333,12 @@ class PerplexicaServer:
                 ),
             )
 
-    async def cleanup(self):
+    async def cleanup(self) -> None:
         """Cleanup resources."""
         await self.client.close()
 
 
-async def main():
+async def main() -> None:
     """Main entry point."""
     server = PerplexicaServer()
     try:
