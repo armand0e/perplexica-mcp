@@ -1,7 +1,9 @@
 """Tests for the Perplexica MCP server."""
 
-import pytest
 from unittest.mock import AsyncMock, patch
+
+import pytest
+
 from perplexica_mcp.server import (
     PerplexicaClient,
     SearchRequest,
